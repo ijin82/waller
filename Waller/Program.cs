@@ -14,7 +14,17 @@ namespace WinFormsApp1
         [STAThread]
         static void Main()
         {
-            //Application.SetHighDpiMode(HighDpiMode.SystemAware);
+            Console.WriteLine();
+            
+            // catch command line args
+            string[] arguments = Environment.GetCommandLineArgs();
+            if (arguments.Length == 2 && arguments[1] == "--set-wall") {
+                // set wallpaper according settings
+                Form1 appForm = new Form1();
+                appForm.setRandomWallpaper();
+                return;
+            }
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
