@@ -1,5 +1,5 @@
 # Waller
-Simple utility to rorate wallpapers on your desktop using windows task scheduler
+Simple utility to rotate/randomize wallpapers on your desktop using windows task scheduler and timer set up
 
 # How is that working?
 - Set up folder with your wallpaper files
