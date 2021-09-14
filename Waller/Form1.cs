@@ -123,7 +123,8 @@ namespace WinFormsApp1
                 TaskDefinition td = ts.NewTask();
                 td.RegistrationInfo.Description = "Sets random wallpaper from specified folder";
 
-                DailyTrigger dt = new DailyTrigger { DaysInterval = 1 };
+                DateTime dateTimeStart = System.DateTime.Now.AddMinutes(1);
+                DailyTrigger dt = new DailyTrigger { DaysInterval = 1, StartBoundary = dateTimeStart };
                 dt.Repetition.Interval = TimeSpan.FromMinutes(Convert.ToDouble(this.taskMinutes));
 
                 // Create a trigger that will fire the task at this time every other day
@@ -132,10 +133,9 @@ namespace WinFormsApp1
                 // Create an action that will launch Notepad whenever the trigger fires
                 td.Actions.Add(new ExecAction(this.exeFilePath, "--set-wall", this.exeFileFolderPath));
 
-                //td.
-
                 // Register the task in the root folder
-                ts.RootFolder.RegisterTaskDefinition(this.taskName, td);
+                Microsoft.Win32.TaskScheduler.Task mtTask = ts.RootFolder.RegisterTaskDefinition(this.taskName, td);
+                //mtTask.Run();
 
                 this.toolStripStatusLabel1.Text = "Created task, named \"" + this.taskName + "\"";
             }
@@ -161,6 +161,7 @@ namespace WinFormsApp1
             INIManager manager = new INIManager(this.wallerIni);
             String path = "C:\\";
             String mask = "*.jpg";
+            String prevWall = "";
             Random rnd = new Random();
 
             try
@@ -175,10 +176,20 @@ namespace WinFormsApp1
 
             if (!Directory.Exists(path)) return "";
 
+            try { prevWall = manager.GetPrivateString("main", "prev_wall"); } catch (Exception) { }
+
+
             string[] fileEntries = Directory.GetFiles(path, mask);
             if (fileEntries.Length < 1) return "";
 
-            int index = rnd.Next(fileEntries.Length);
+            int index = 0;
+
+            do
+            {
+                index = rnd.Next(fileEntries.Length);
+            } while (prevWall == fileEntries[index] && fileEntries.Length > 1);
+
+            manager.WritePrivateString("main", "prev_wall", fileEntries[index]);
 
             return fileEntries[index];
         }
