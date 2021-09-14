@@ -208,7 +208,8 @@ namespace WinFormsApp1
         {
             String randomWall = this.getRandomWallFile();
 
-            SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, randomWall, SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE);
+            if (randomWall != "")
+                SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, randomWall, SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE);
 
             return randomWall;
         }
