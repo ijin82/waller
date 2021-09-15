@@ -57,11 +57,11 @@ namespace WinFormsApp1
             this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 10.75F, System.Drawing.FontStyle.Italic);
             this.label1.ForeColor = System.Drawing.Color.Maroon;
-            this.label1.Location = new System.Drawing.Point(275, 295);
+            this.label1.Location = new System.Drawing.Point(208, 293);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(299, 20);
+            this.label1.Size = new System.Drawing.Size(364, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Another useless wallpaper utility for Windows";
+            this.label1.Text = "Another useless wallpaper-changing utility for Windows";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             this.label1.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
@@ -113,9 +113,9 @@ namespace WinFormsApp1
             // 
             // btn_folder
             // 
-            this.btn_folder.Location = new System.Drawing.Point(423, 42);
+            this.btn_folder.Location = new System.Drawing.Point(423, 41);
             this.btn_folder.Name = "btn_folder";
-            this.btn_folder.Size = new System.Drawing.Size(149, 35);
+            this.btn_folder.Size = new System.Drawing.Size(149, 37);
             this.btn_folder.TabIndex = 4;
             this.btn_folder.Text = "Choose";
             this.btn_folder.UseVisualStyleBackColor = true;
@@ -231,6 +231,8 @@ namespace WinFormsApp1
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F);
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(600, 400);
+            this.MinimumSize = new System.Drawing.Size(600, 400);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Waller";
