@@ -225,5 +225,20 @@ namespace WinFormsApp1
         {
 
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/ijin82/waller");
+        }
+
+        private void label1_MouseHover(object sender, EventArgs e)
+        {
+            label1.ForeColor = System.Drawing.Color.Red;
+        }
+
+        private void label1_MouseLeave(object sender, EventArgs e)
+        {
+            label1.ForeColor = System.Drawing.Color.Maroon;
+        }
     }
 }

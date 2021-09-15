@@ -54,14 +54,18 @@ namespace WinFormsApp1
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 10.75F, System.Drawing.FontStyle.Italic);
             this.label1.ForeColor = System.Drawing.Color.Maroon;
             this.label1.Location = new System.Drawing.Point(275, 295);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(297, 20);
+            this.label1.Size = new System.Drawing.Size(299, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Another simple wallpaper utility for Windows";
+            this.label1.Text = "Another useless wallpaper utility for Windows";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label1.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.label1.MouseHover += new System.EventHandler(this.label1_MouseHover);
             // 
             // label2
             // 
