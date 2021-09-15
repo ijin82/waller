@@ -1,5 +1,5 @@
 # Waller
-Simple utility to rotate/randomize wallpapers on your desktop using windows task scheduler and timer set up
+Simple utility to change wallpaper on your desktop using Windows task scheduler and timer set up
 
 # How is that working?
 - Set up folder with your wallpaper files
@@ -10,4 +10,5 @@ Simple utility to rotate/randomize wallpapers on your desktop using windows task
 Windows scheduler will call this app with argument to call function of random wallpaper set up. 
 Check out details of sheduled task to understand details.
 
-![2021-09-14_22-11-48](https://user-images.githubusercontent.com/612918/133327076-1d325de0-9420-44dc-b186-424048b6f7f9.png)
+![2021-09-16_00-40-12](https://user-images.githubusercontent.com/612918/133519230-1824978e-3399-4cb3-a567-dbf00921e146.png)
+
