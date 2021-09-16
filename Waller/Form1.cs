@@ -8,7 +8,7 @@ namespace WinFormsApp1
 {
     public partial class Form1 : Form
     {
-        private String taskName = "Waller_SetWallpaperTask";
+        private string taskName = "Waller_SetWallpaperTask";
         private decimal taskMinutes = 15;
         private string wallerIni = "\\Waller.ini";
 
@@ -26,8 +26,11 @@ namespace WinFormsApp1
         {
             InitializeComponent();
 
+            // app .exe full path
             this.exeFilePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            // app directory
             this.exeFileFolderPath = System.IO.Path.GetDirectoryName(this.exeFilePath);
+            // app .ini file full path
             this.wallerIni = this.exeFileFolderPath + this.wallerIni;
 
             INIManager manager = new INIManager(this.wallerIni);
@@ -119,23 +122,24 @@ namespace WinFormsApp1
                 }
                 catch (Exception) { }
 
-                // Create a new task definition and assign properties
-                TaskDefinition td = ts.NewTask();
-                td.RegistrationInfo.Description = "Sets random wallpaper from specified folder";
-
+                // Create a new task definition
                 DateTime dateTimeStart = System.DateTime.Now.AddMinutes(1);
+                TaskDefinition td = ts.NewTask();
+                td.RegistrationInfo.Description = "Sets random wallpaper from specified folder"
+                
+                // Create task trigger
                 DailyTrigger dt = new DailyTrigger { DaysInterval = 1, StartBoundary = dateTimeStart };
                 dt.Repetition.Interval = TimeSpan.FromMinutes(Convert.ToDouble(this.taskMinutes));
-
-                // Create a trigger that will fire the task at this time every other day
                 td.Triggers.Add(dt);
 
-                // Create an action that will launch Notepad whenever the trigger fires
+                // Create task action
                 td.Actions.Add(new ExecAction(this.exeFilePath, "--set-wall", this.exeFileFolderPath));
+
+                // Additional task settings
+                td.Settings.StartWhenAvailable = true;
 
                 // Register the task in the root folder
                 Microsoft.Win32.TaskScheduler.Task mtTask = ts.RootFolder.RegisterTaskDefinition(this.taskName, td);
-                //mtTask.Run();
 
                 this.toolStripStatusLabel1.Text = "Created task, named \"" + this.taskName + "\"";
             }
@@ -169,7 +173,7 @@ namespace WinFormsApp1
                 path = manager.GetPrivateString("main", "path");
                 mask = manager.GetPrivateString("main", "mask");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return "";
             }
@@ -194,16 +198,6 @@ namespace WinFormsApp1
             return fileEntries[index];
         }
 
-        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         public string setRandomWallpaper()
         {
             String randomWall = this.getRandomWallFile();
@@ -220,12 +214,6 @@ namespace WinFormsApp1
 
             this.toolStripStatusLabel1.Text = "Wallpaper set: " + randomWall;
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void label1_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/ijin82/waller");
