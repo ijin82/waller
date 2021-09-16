@@ -125,7 +125,7 @@ namespace WinFormsApp1
                 // Create a new task definition
                 DateTime dateTimeStart = System.DateTime.Now.AddMinutes(1);
                 TaskDefinition td = ts.NewTask();
-                td.RegistrationInfo.Description = "Sets random wallpaper from specified folder"
+                td.RegistrationInfo.Description = "Sets random wallpaper from specified folder";
                 
                 // Create task trigger
                 DailyTrigger dt = new DailyTrigger { DaysInterval = 1, StartBoundary = dateTimeStart };
