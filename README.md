@@ -10,5 +10,5 @@ Simple utility to change wallpaper on your desktop using Windows task scheduler 
 Windows scheduler will call this app with argument to call function of random wallpaper set up. 
 Check out details of sheduled task to understand details.
 
-![2021-09-16_00-40-12](https://user-images.githubusercontent.com/612918/133519230-1824978e-3399-4cb3-a567-dbf00921e146.png)
+![2021-09-16_03-21-40](https://user-images.githubusercontent.com/612918/133534271-206e1e23-7519-4ad4-a230-8971ae2337a9.png)
 
