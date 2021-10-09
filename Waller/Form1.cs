@@ -198,12 +198,42 @@ namespace WinFormsApp1
             return fileEntries[index];
         }
 
-        public string setRandomWallpaper()
+        public string setRandomWallpaper(Boolean forceSetup = false)
         {
-            String randomWall = this.getRandomWallFile();
+            INIManager manager = new INIManager(this.wallerIni);
 
+            Decimal minutesInterval = Convert.ToDecimal(manager.GetPrivateString("main", "minutes"));
+            if (minutesInterval <= 0) {
+                minutesInterval = this.taskMinutes;
+            }
+
+            Boolean canSetupWall = true;
+            DateTime dt = DateTime.Now, lastSetupDt;
+            String wallSetupDateString = manager.GetPrivateString("main", "wall_set_time");
+            if (wallSetupDateString != "")
+            {
+                Decimal minutesPassed = 0;
+                try
+                {
+                    lastSetupDt = DateTime.Parse(wallSetupDateString);
+                    minutesPassed = Convert.ToDecimal(dt.Subtract(lastSetupDt).TotalMinutes);
+                } catch (Exception) { }
+                
+                if (minutesPassed < minutesInterval)
+                {
+                    canSetupWall = false;
+                }
+            }
+
+            String randomWall = this.getRandomWallFile();
             if (randomWall != "")
-                SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, randomWall, SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE);
+            {
+                if (canSetupWall || forceSetup)
+                { 
+                    manager.WritePrivateString("main", "wall_set_time", dt.ToString());
+                    SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, randomWall, SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE);
+                }
+            }
 
             return randomWall;
         }

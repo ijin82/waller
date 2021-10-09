@@ -18,11 +18,18 @@ namespace WinFormsApp1
             
             // catch command line args
             string[] arguments = Environment.GetCommandLineArgs();
-            if (arguments.Length == 2 && arguments[1] == "--set-wall") {
-                // set wallpaper according settings
+            if (arguments.Contains("--set-wall")) {
+
                 Form1 appForm = new Form1();
-                appForm.setRandomWallpaper();
-                return;
+
+                if (arguments.Contains("--force")) {
+                    // set wallpaper according settings
+                    appForm.setRandomWallpaper(true);
+                    return;
+                } else {
+                    appForm.setRandomWallpaper();
+                    return;
+                }
             }
 
             Application.EnableVisualStyles();
