@@ -22,6 +22,8 @@ namespace WinFormsApp1
         private string exeFilePath = "";
         private string exeFileFolderPath = "";
 
+        private bool taskExists = false;
+
         public Form1()
         {
             InitializeComponent();
@@ -55,6 +57,31 @@ namespace WinFormsApp1
                 this.toolStripStatusLabel1.Text = "Random wallpaper NOT found";
             }
 
+            this.toggleTaskButtons();
+        }
+
+        private void toggleTaskButtons()
+        {
+            // check if task exists in scheduler
+            // Get the service on the local machine
+            using (TaskService ts = new TaskService())
+            {
+                try
+                {
+                    // Remove the task if exists
+                    Task task = ts.GetTask(this.taskName);
+                    if (task != null)
+                    {
+                        this.taskExists = true;
+                    } else {
+                        this.taskExists = false;
+                    }
+                }
+                catch (Exception) { }
+            }
+
+            this.button_task_down.Enabled = this.taskExists;
+            this.button_task_up.Enabled = !this.taskExists;
         }
 
         private void btn_folder_Click(object sender, EventArgs e)
@@ -94,6 +121,8 @@ namespace WinFormsApp1
 
                 this.toolStripStatusLabel1.Text = "Removed task, named \""  + this.taskName + "\"";
             }
+
+            this.toggleTaskButtons();
         }
 
         private void button_task_up_Click(object sender, EventArgs e)
@@ -143,6 +172,8 @@ namespace WinFormsApp1
 
                 this.toolStripStatusLabel1.Text = "Created task, named \"" + this.taskName + "\"";
             }
+
+            this.toggleTaskButtons();
         }
 
         private void SetStatus(String statusText)
@@ -240,7 +271,7 @@ namespace WinFormsApp1
 
         private void button_set_rand_Click(object sender, EventArgs e)
         {
-            String randomWall = this.setRandomWallpaper();
+            String randomWall = this.setRandomWallpaper(true);
 
             this.toolStripStatusLabel1.Text = "Wallpaper set: " + randomWall;
         }
