@@ -30,6 +30,7 @@ namespace WinFormsApp1
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -59,7 +60,7 @@ namespace WinFormsApp1
             this.label1.ForeColor = System.Drawing.Color.Maroon;
             this.label1.Location = new System.Drawing.Point(292, 295);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(280, 20);
+            this.label1.Size = new System.Drawing.Size(347, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Another useless wallpaper-changing utility";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -72,7 +73,7 @@ namespace WinFormsApp1
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(175, 30);
+            this.label2.Size = new System.Drawing.Size(226, 37);
             this.label2.TabIndex = 1;
             this.label2.Text = "Wallpapers folder";
             // 
@@ -81,7 +82,7 @@ namespace WinFormsApp1
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(7, 80);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(205, 30);
+            this.label3.Size = new System.Drawing.Size(261, 37);
             this.label3.TabIndex = 2;
             this.label3.Text = "Files mask (Ex.: *.jpg)";
             // 
@@ -90,7 +91,7 @@ namespace WinFormsApp1
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(309, 80);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(237, 30);
+            this.label4.Size = new System.Drawing.Size(304, 37);
             this.label4.TabIndex = 3;
             this.label4.Text = "Rotation timer (minutes)";
             // 
@@ -99,14 +100,14 @@ namespace WinFormsApp1
             this.textBox_path.Location = new System.Drawing.Point(12, 42);
             this.textBox_path.Name = "textBox_path";
             this.textBox_path.ReadOnly = true;
-            this.textBox_path.Size = new System.Drawing.Size(404, 35);
+            this.textBox_path.Size = new System.Drawing.Size(404, 42);
             this.textBox_path.TabIndex = 4;
             // 
             // TextBox_mask
             // 
             this.TextBox_mask.Location = new System.Drawing.Point(12, 113);
             this.TextBox_mask.Name = "TextBox_mask";
-            this.TextBox_mask.Size = new System.Drawing.Size(174, 35);
+            this.TextBox_mask.Size = new System.Drawing.Size(174, 42);
             this.TextBox_mask.TabIndex = 1;
             this.TextBox_mask.Text = "*.jpg";
             this.TextBox_mask.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -160,7 +161,7 @@ namespace WinFormsApp1
             0,
             0});
             this.NumericUpDown_minutes.Name = "NumericUpDown_minutes";
-            this.NumericUpDown_minutes.Size = new System.Drawing.Size(154, 35);
+            this.NumericUpDown_minutes.Size = new System.Drawing.Size(154, 42);
             this.NumericUpDown_minutes.TabIndex = 3;
             this.NumericUpDown_minutes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.NumericUpDown_minutes.Value = new decimal(new int[] {
@@ -174,7 +175,7 @@ namespace WinFormsApp1
             this.label_status.AutoSize = true;
             this.label_status.Location = new System.Drawing.Point(13, 285);
             this.label_status.Name = "label_status";
-            this.label_status.Size = new System.Drawing.Size(0, 30);
+            this.label_status.Size = new System.Drawing.Size(0, 37);
             this.label_status.TabIndex = 12;
             this.label_status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -184,18 +185,19 @@ namespace WinFormsApp1
             // 
             // statusStrip1
             // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 339);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 331);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(584, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(582, 22);
             this.statusStrip1.TabIndex = 13;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 16);
             // 
             // button_set_rand
             // 
@@ -209,9 +211,9 @@ namespace WinFormsApp1
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 36F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 361);
+            this.ClientSize = new System.Drawing.Size(582, 353);
             this.Controls.Add(this.button_set_rand);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.label_status);
@@ -227,6 +229,7 @@ namespace WinFormsApp1
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(600, 400);
