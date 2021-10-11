@@ -87,7 +87,9 @@ namespace WinFormsApp1
         private void btn_folder_Click(object sender, EventArgs e)
         {
             _ = folderBrowserDialog1.ShowDialog();
-            textBox_path.Text = folderBrowserDialog1.SelectedPath;
+            if (folderBrowserDialog1.SelectedPath != "") {
+                textBox_path.Text = folderBrowserDialog1.SelectedPath;
+            }
         }
 
         private void button_save_Click(object sender, EventArgs e)
